@@ -1,10 +1,12 @@
 import asyncio
+import logging
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import logging
 
 TOKEN = "ВАШ_ТОКЕН_БОТА"
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
+
+logging.basicConfig(level=logging.INFO)
 
 user_names = {}
 
