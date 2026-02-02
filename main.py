@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
+from aiogram.utils import logging
 
 TOKEN = "ВАШ_ТОКЕН_БОТА"
 bot = Bot(token=TOKEN)
@@ -60,4 +60,4 @@ async def repeater(message: types.Message):
 
 if __name__ == "__main__":
     from aiogram import executor
-    executor.start_polling(dp)
+    asyncio.run(dp.start_polling())
