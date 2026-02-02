@@ -1,12 +1,13 @@
-import asyncio
-import logging
+import os
+from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types
+import asyncio
 
-TOKEN = "ВАШ_ТОКЕН_БОТА"
+load_dotenv()
+TOKEN = os.getenv('BOT_TOKEN')
+
 bot = Bot(token=TOKEN)
-dp = Dispatcher()
-
-logging.basicConfig(level=logging.INFO)
+dp = Dispatcher(bot)
 
 user_names = {}
 
@@ -61,5 +62,4 @@ async def repeater(message: types.Message):
         await message.answer_voice(message.voice.file_id, caption=f"{user_name}: Голосовое сообщение.")
 
 if __name__ == "__main__":
-    from aiogram import executor
     asyncio.run(dp.start_polling())
